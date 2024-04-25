@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+require('dotenv').config()
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -13,7 +14,7 @@ const helmet = require('helmet')
 const app = express();
 const mongoose=require('mongoose');
 mongoose.set("strictQuery", false);
-const mongoDB="mongodb+srv://eligiocristantielli:ygST2rKtTfSS6Z2L@cluster0.crtaxcf.mongodb.net/local_library?retryWrites=true&w=majority&appName=Cluster0";
+const mongoDB="mongodb+srv://"+process.env.DB_USERNAME+':'+process.env.DB_PASSWORD+"@cluster0.crtaxcf.mongodb.net/local_library?retryWrites=true&w=majority&appName=Cluster0";
 main().catch((err) => console.log(err));
 async function main() {
   await mongoose.connect(mongoDB);
