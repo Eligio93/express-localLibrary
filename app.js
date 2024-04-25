@@ -15,7 +15,7 @@ require('dotenv').config()
 const app = express();
 const mongoose=require('mongoose');
 mongoose.set("strictQuery", false);
-const mongoDB=process.env.MONGO_URL || "mongodb+srv://"+process.env.DB_USERNAME+':'+process.env.DB_PASSWORD+"@cluster0.crtaxcf.mongodb.net/local_library?retryWrites=true&w=majority&appName=Cluster0";
+const mongoDB=process.env.MONGO_URI || "mongodb+srv://"+process.env.DB_USERNAME+':'+process.env.DB_PASSWORD+"@cluster0.crtaxcf.mongodb.net/local_library?retryWrites=true&w=majority&appName=Cluster0";
 main().catch((err) => console.log(err));
 async function main() {
   await mongoose.connect(mongoDB);
