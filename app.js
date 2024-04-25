@@ -9,11 +9,12 @@ const usersRouter = require('./routes/users');
 const catalogRouter = require('./routes/catalog')
 const compression = require('compression');
 const helmet = require('helmet')
+require('dotenv').config()
 
 const app = express();
 const mongoose=require('mongoose');
 mongoose.set("strictQuery", false);
-const mongoDB="mongodb+srv://eligiocristantielli:ygST2rKtTfSS6Z2L@cluster0.crtaxcf.mongodb.net/local_library?retryWrites=true&w=majority&appName=Cluster0";
+const mongoDB="mongodb+srv://"+process.env.DB_USERNAME+':'+process.env.DB_PASSWORD+"@cluster0.crtaxcf.mongodb.net/local_library?retryWrites=true&w=majority&appName=Cluster0";
 main().catch((err) => console.log(err));
 async function main() {
   await mongoose.connect(mongoDB);
